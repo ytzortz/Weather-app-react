@@ -1,6 +1,6 @@
 const BigTitle = ({ title }) => {
   return (
-    <h1 style={{ textAlign: 'center', marginBottom: '50%' }}>{title}</h1>
+    <h1 style={{ textAlign: 'center', marginBottom: '10%' }}>{title}</h1>
   );
 };
 
