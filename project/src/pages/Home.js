@@ -2,34 +2,36 @@ import React, { useState } from 'react';
 import BigTitle from '../components/BigTitle';
 import SearchBar from '../components/SearchBar';
 import WeatherCardsContainer from '../components/WeatherCardsContainer';
+import { fetchWeatherData } from '../services/api'; 
+
 
 const Home = () => {
 
-
       const [weatherData, setWeatherData] = useState([
-        { id: 1, city: 'New York', temperature: 25, description: 'Partly cloudy' },
-        { id: 2, city: 'Pietermaritzburg', temperature: 20, description: 'Cloudy' },
-        { id: 3, city: 'Heraklion', temperature: 35, description: 'HELP' }
+        { id: 1, city: 'Heraklion', temperature: 35, description: 'HELP' }
       ]);
+
     
-      const handleSearch = (city) => {
-        // Logic to update weatherData based on search query
+      const handleSearch = async (city, resetQuery) => {
 
-        // Pernao to onoma apo to search stin poli me id = 1
-        // einai paradigma apla gia katanoisi
-
-        setWeatherData(prevWeatherData => {
-          const updatedWeatherData = prevWeatherData.map(item => {
-            if (item.id === 1) {
-              return { ...item, city: city }; // Update city name for id 1
-            }
-            return item;
+        try {
+          const newWeather = await fetchWeatherData(city); //  fetchWeatherData should return a weather object
+          setWeatherData(prevData => {
+            const updatedData = [...prevData, newWeather]; 
+            if (updatedData.length > 3)  // Limit to 3 cards
+              updatedData.shift();            
+            return updatedData;
           });
-          return updatedWeatherData;
-        });
+        } catch (error) {
+          console.error('Error fetching weather data:', error); 
+
+          // TO-DO: I should display an error message here
+        }
+    
+        resetQuery(); // Clear the search input after search
       };
     
-      
+
 
     return (
       <div>

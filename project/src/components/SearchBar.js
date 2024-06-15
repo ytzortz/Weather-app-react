@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/SearchBar.css'; // Adjust the path as needed
+import '../styles/SearchBar.css';
 
 
 const SearchBar = ({ onSearch }) => {
@@ -10,7 +10,8 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
-    onSearch(query);
+    if(query.trim() !== '') // checks if query is empty or only whitespace 
+      onSearch(query, () => setQuery(''));
   };
 
   // Search works with Enter key
@@ -19,7 +20,6 @@ const SearchBar = ({ onSearch }) => {
       handleSearch();
     }
   };
-
 
   return (
     <div className="search-bar-container">
