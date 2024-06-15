@@ -8,10 +8,9 @@ import { fetchWeatherData } from '../services/api';
 const Home = () => {
 
       const [weatherData, setWeatherData] = useState([
-        { id: 1, city: 'Heraklion', temperature: 35, description: 'HELP' }
+        { id: 1, city: 'Heraklion', temperature: 35, description: 'Very hot', icon: '//cdn.weatherapi.com/weather/64x64/day/176.png'}
       ]);
 
-    
       const handleSearch = async (city, resetQuery) => {
 
         try {
@@ -24,15 +23,11 @@ const Home = () => {
           });
         } catch (error) {
           console.error('Error fetching weather data:', error); 
-
-          // TO-DO: I should display an error message here
+          alert('City not found. Please try another city.'); // Error popup an alert popup
         }
-    
         resetQuery(); // Clear the search input after search
       };
     
-
-
     return (
       <div>
         <BigTitle title="Weather App"/>

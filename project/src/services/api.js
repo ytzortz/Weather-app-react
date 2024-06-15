@@ -24,7 +24,8 @@ export const fetchWeatherData = async (city) => {
         id: Date.now(),
         city: response.data.location.name,
         temperature: response.data.current.temp_c, //temperature in Celcius
-        description: response.data.current.condition.text 
+        description: response.data.current.condition.text,
+        icon: response.data.current.condition.icon
     };
   } catch (error) {
     console.error('Error fetching weather data:', error);
