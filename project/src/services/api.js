@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { addToCache, getFromCache } from '../utils/cache'
 
 const API_KEY = '5236c0bd8emshf7a1cb40b7371e4p16ae74jsnb9f1911703d5';
 const BASE_URL = 'https://weatherapi-com.p.rapidapi.com';
@@ -13,20 +14,32 @@ const api = axios.create({
 });
 
 export const fetchWeatherData = async (city) => {
+  
+  // Check if data already in cache
+  const cachedData = getFromCache(city);
+  if(cachedData)
+    return cachedData;
+
+  // Data not in cache, so fetch from the API
   try {
     const response = await api.get('/forecast.json', {
       params: { q: city, days: '3' }
     });
 
-    console.log(response);
+    console.log(response); // For debugging
 
-    return {
-        id: Date.now(),
-        city: response.data.location.name,
-        temperature: response.data.current.temp_c, //temperature in Celcius
-        description: response.data.current.condition.text,
-        icon: response.data.current.condition.icon
+    const newWeather = {
+      id: Date.now(),
+      city: response.data.location.name,
+      temperature: response.data.current.temp_c, // Τemperature in Celsius
+      description: response.data.current.condition.text,
+      icon: response.data.current.condition.icon
     };
+
+    // Add the new weather data to cache
+    addToCache(newWeather);
+
+    return newWeather;
   } catch (error) {
     console.error('Error fetching weather data:', error);
     throw error; // Handle errors
