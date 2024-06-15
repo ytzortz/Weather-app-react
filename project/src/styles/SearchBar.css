@@ -1,0 +1,20 @@
+.search-bar-input {
+    width: 300px; 
+    height: 45px; 
+    font-size: 20px;
+    padding: 0 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px 0 0 8px; 
+}
+  
+.search-bar-button{
+    height: 45px;
+    padding: 0 10px; 
+    font-size: 20px; 
+    color: black; 
+    background-color: white; 
+    cursor: pointer; 
+    border: 1px solid #ccc; 
+    border-radius: 0 8px 8px 0; 
+
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/SearchBar.css'; // Adjust the path as needed
 
 
 const SearchBar = ({ onSearch }) => {
@@ -21,15 +22,16 @@ const SearchBar = ({ onSearch }) => {
 
 
   return (
-    <div className="search-bar">
+    <div className="search-bar-container">
       <input
+        className='search-bar-input'
         type="text"
         placeholder="Enter city name..."
         value={query}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className='search-bar-button' onClick={handleSearch}>Search</button>
     </div>
   );
 };

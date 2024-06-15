@@ -1,0 +1,31 @@
+.weather-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    max-width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden; /* For a huge city name such as Pietermaritzburg, SA */
+    cursor: pointer; 
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  }
+
+  .weather-card:hover {
+    transform: scale(1.05); /* Card enlarged */
+  }
+
+  /* To prevent overflows from a big string (huge city name etc) */
+  .weather-card-content h3 {
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Ensures the text stays within the container */
+    text-overflow: ellipsis; /* Adds ellipsis -> (...) for overflowing text */
+  }
+  
+  .weather-cards-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; /* Centers the cards horizontally */
+    gap: 20px; 
+  }
+  
