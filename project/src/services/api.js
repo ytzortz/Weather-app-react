@@ -31,9 +31,13 @@ export const fetchWeatherData = async (city) => {
     const newWeather = {
       id: Date.now(),
       city: response.data.location.name,
-      temperature: response.data.current.temp_c, // Τemperature in Celsius
+      country: response.data.location.country,
+      temperature_c: response.data.current.temp_c, // Τemperature in Celsius
+      temperature_f: response.data.current.temp_f,  // Temperature in Fahrenheit
       description: response.data.current.condition.text,
-      icon: response.data.current.condition.icon
+      icon: response.data.current.condition.icon, 
+      forecast: response.data.forecast.forecastday // Array that contains current, tomorrow and the next day 
+
     };
 
     // Add the new weather data to cache

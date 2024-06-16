@@ -2,7 +2,7 @@ const CACHE_KEY = 'weatherCache';
 const CACHE_LIMIT = 10; // cache size to 10 cities 
 
 
-export const getCache = () => {
+  export const getCache = () => {
     const cache = localStorage.getItem(CACHE_KEY);
     return cache ? JSON.parse(cache) : [];
   };
@@ -13,7 +13,7 @@ export const getCache = () => {
   };
   
 
-export const addToCache = (weatherData) => {
+  export const addToCache = (weatherData) => {
     let cache = getCache();
     cache = cache.filter(item => item.city !== weatherData.city); // Remove existing entry for the city
     cache.unshift(weatherData); // Add new data at the beginning
@@ -23,8 +23,8 @@ export const addToCache = (weatherData) => {
     setCache(cache);
   };
   
-
-export const getFromCache = (city) => {
+  
+  export const getFromCache = (city) => {
     const cache = getCache();
     return cache.find(item => item.city.toLowerCase() === city.toLowerCase());
   };
@@ -43,3 +43,21 @@ export const getFromCache = (city) => {
     }
   };
   
+  
+  // Flushes cache. Mainly for debuging. You can use the line in console
+  export const flushCache = () => {
+    localStorage.removeItem(CACHE_KEY);
+  };
+
+  export const flushCacheInterval = (time) => {
+    var now = new Date().getTime();
+    var setupTime = localStorage.getItem('setupTime');
+    if (setupTime == null) {
+      localStorage.setItem('setupTime', now);
+    } else {
+      if(now - setupTime > time) {
+        flushCache();
+        localStorage.setItem('setupTime', now);
+      }
+    }
+  };

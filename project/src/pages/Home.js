@@ -7,12 +7,10 @@ import { fetchWeatherData } from '../services/api';
 
 const Home = () => {
 
-      const [weatherData, setWeatherData] = useState([
-        { id: 1, city: 'Heraklion', temperature: 35, description: 'Very hot', icon: '//cdn.weatherapi.com/weather/64x64/day/176.png'}
-      ]);
+      const [weatherData, setWeatherData] = useState([]);
+
 
       const handleSearch = async (city, resetQuery) => {
-
         try {
           const newWeather = await fetchWeatherData(city); //  fetchWeatherData should return a weather object
           setWeatherData(prevData => {

@@ -8,10 +8,27 @@
     overflow: hidden; /* For a huge city name such as Pietermaritzburg, SA */
     cursor: pointer; 
     transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+
+    /* These two are to remove the link style */
+    text-decoration: none; 
+    color: white;
+  }
+
+  .weather-card:link{
+    text-decoration: none; 
+  }
+
+  .weather-card:visited{
+    text-decoration: none; 
+  }
+
+  .weather-card:active{
+    text-decoration: none; 
   }
 
   .weather-card:hover {
     transform: scale(1.05); /* Card enlarged */
+    text-decoration: none; 
   }
 
   /* To prevent overflows from a big string (huge city name etc) */

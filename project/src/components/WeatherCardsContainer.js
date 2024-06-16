@@ -1,11 +1,14 @@
 import WeatherCard from './WeatherCard';
 import '../styles/WeatherCardsContainer.css'; 
+import { useNavigate } from 'react-router-dom';
+
 
 const WeatherCardsContainer = ({ weatherData }) => {
 
+  const navigate = useNavigate();
   const handleCardClick = (city) => {
-    console.log('Card clicked:', city);
-    // TO-DO: Will add more functionalities later on
+    console.log('Card clicked:', city);   //for debugging
+    navigate('/details/${city}');
   };
   return (
     <div className="weather-cards-container">

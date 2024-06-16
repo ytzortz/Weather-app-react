@@ -1,0 +1,51 @@
+.weather-detail {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.weather-detail-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-detail-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.weather-detail-left .weather-detail-day {
+    font-size: 1.4rem; /* Example: Increase day font size */
+    margin: 10px; /* Remove any margin */
+
+}
+
+.weather-detail-left .weather-icon-temp {
+    display: flex;
+    align-items: center;
+}
+
+.weather-detail-left img {
+    width: 64px; /* Adjust the size of the weather icon */
+    height: 64px; /* Adjust the size of the weather icon */
+    margin-right: 8px; /* Adjust spacing between icon and temperature */
+}
+
+.weather-detail-left p {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    margin: 0; 
+}
+
+.weather-detail-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.weather-detail-right p {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
