@@ -11,6 +11,7 @@ const Details = () => {
     const { city } = useParams();
     const weatherData = getFromCache(city);
     const days = getDayNames();
+    
   
     if (!weatherData) 
       return <div>No data found for {city}</div>;

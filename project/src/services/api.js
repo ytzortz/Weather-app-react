@@ -26,7 +26,7 @@ export const fetchWeatherData = async (city) => {
       params: { q: city, days: '3' }
     });
 
-    console.log(response); // For debugging
+    console.log(response); // For debugging purposes (would not normally be included in production)
 
     const newWeather = {
       id: Date.now(),
@@ -40,8 +40,10 @@ export const fetchWeatherData = async (city) => {
 
     };
 
-    // Add the new weather data to cache
-    addToCache(newWeather);
+    // Add the new weather data to cache, if city does not exist
+    if (!getFromCache(newWeather.city)) {
+      addToCache(newWeather);
+    }
 
     return newWeather;
   } catch (error) {
