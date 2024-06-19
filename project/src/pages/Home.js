@@ -21,7 +21,8 @@ const Home = () => {
             setWeatherData(prevData => {
               const updatedData = [...prevData, newWeather]; 
               if (updatedData.length > 3)  // Limit to 3 cards
-                updatedData.shift();            
+                updatedData.shift();    
+                resetQuery(); // Clear the search input after search        
             return updatedData;
             });
           } else {
@@ -29,9 +30,8 @@ const Home = () => {
           }
         } catch (error) {
           console.error('Error fetching weather data:', error); 
-          alert('City not found. Please try another city.'); // Error popup an alert popup
+          alert( city+ ' not found. Please try another city.'); // Error popup an alert popup
         }
-        resetQuery(); // Clear the search input after search
       };
     
     return (

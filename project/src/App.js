@@ -9,8 +9,8 @@ import { flushCacheInterval } from './utils/cache'
 
 function App() {
 
-  // flushing cache after 1 hour
-  flushCacheInterval(60*60*1000);
+  // flushing cache after 15 minutes
+  flushCacheInterval(15*60*1000);
 
   return (
     <Router>

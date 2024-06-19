@@ -10,7 +10,7 @@ The Weather App is a React-based application designed to provide users with deta
 
 - **Caching Mechanism**: 
     - The first 10 cities are cached, and when a user searches for a city, the app first checks the cache. If the city is already cached, the data is retrieved from the cache.
-    - The cache is automatically flushed every hour to ensure up-to-date weather information.
+    - The cache is automatically flushed every 15 minutes to ensure up-to-date weather information.
 
 - **Capital City Handling**: 
     - When a country is searched, the app fetches the weather data for the capital city via the API.
