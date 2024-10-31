@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { addToCache, getFromCache } from '../utils/cache'
+// require('dotenv').config()
 
-const API_KEY = '5236c0bd8emshf7a1cb40b7371e4p16ae74jsnb9f1911703d5';
-const BASE_URL = 'https://weatherapi-com.p.rapidapi.com';
+const API_KEY = process.env.REACT_APP_RAPIDAPI_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const api = axios.create({
   baseURL: BASE_URL,
